@@ -50,7 +50,6 @@ class ArticleController {
         header("Location: " . BASE_URL);
     }
     public function showDescription($id){
-        $this->helper->checkLoggedIn();
         $article = $this->model->getArticle($id);
         $this->view->viewArticle($article);
     }
