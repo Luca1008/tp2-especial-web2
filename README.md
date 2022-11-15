@@ -29,15 +29,15 @@
 
 -> Endpoints De Cada Acción:
 
+<<GET>>
+
+    Para mostrar todos los libros disponibles: http://localhost/WEB2/tp2%20especial%20web2/api/book
+
 <<PAGINACIÓN>>
 
     Mostrar los libros con paginación:  http://localhost/WEB2/tp2%20especial%20web2/api/book?page= (numero entero)
 
     Aclaracion: cada pagina muestra de 10 libros a la vez por lo que si no hay suficientes libros y pasas a otra pagina te devolvera un arreglo vacio
-
-<<GET>>
-
-    Para mostrar todos los libros disponibles: http://localhost/WEB2/tp2%20especial%20web2/api/book
 
 <<GET ORDENADO>>
     
@@ -73,12 +73,14 @@
 
 <<GET TOKEN>>
     
-    Obtener el token de autenticación -> http://localhost/WEB2/tp2%20especial%20web2/api/auth/token -> Aclaración: Al logearnos correctamente obtendremos el token el status code será "401 Unauthorized".
+    Obtener el token de autenticación -> http://localhost/WEB2/tp2%20especial%20web2/api/auth/token -> Aclaración: Al logearnos incorrectamente obtendremos el token el status code será "401 Unauthorized".
 
     Si cualquiera de estas solicitudes sale bien, el status code será "200 OK", de lo contrario será "400 Bad Request" (Salvo en la autenticación).
 
     
 <<GET (por ID)>>
+
+    Para obtener de la base de datos un libro especifico, se necesita tener la ID del mismo.
 
     Mostrar una película con cierto id -> http://localhost/WEB2/tp2%20especial%20web2/api/book/:ID(del libro)
     
