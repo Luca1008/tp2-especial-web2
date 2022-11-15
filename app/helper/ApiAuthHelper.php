@@ -1,0 +1,62 @@
+<?php
+
+class AuthHelper {
+    
+    /**
+     * It takes the token, splits it into three parts, then checks the signature of the token against
+     * the signature it generates. If the signatures match, it returns the payload.
+     * 
+     * @return The token is being returned.
+     */
+    function getToken(){
+        $auth = $this->getAuthHeader(); 
+        $auth = explode(" ", $auth);
+        if($auth[0]!="Bearer" || count($auth) != 2){
+            return array();
+        }
+        $token = explode(".", $auth[1]);
+        $header = $token[0];
+        $payload = $token[1];
+        $signature = $token[2];
+
+        $new_signature = hash_hmac('SHA256', "$header.$payload", "L1008", true);
+        $new_signature = base64url_encode($new_signature);
+        if($signature!=$new_signature)
+            return array();
+
+        $payload = json_decode(base64_decode($payload));
+        if(!isset($payload->exp) || $payload->exp<time())
+            return array();
+        
+        return $payload;
+    }
+
+    /**
+     * If the token is set, return true, else return false.
+     * 
+     * @return The token is being returned.
+     */
+    function isLoggedIn(){
+        $payload = $this->getToken();
+        if(isset($payload->id))
+            return true;
+        else{
+            return false;
+        }
+    }
+
+    /* *
+     * If the HTTP_AUTHORIZATION header is set, use it. Otherwise, if the REDIRECT_HTTP_AUTHORIZATION
+     * header is set, use it. Otherwise, return an empty string.
+     * 
+     * @return The HTTP Authorization header.
+     */
+    function getAuthHeader(){
+        $header = "";
+        if(isset($_SERVER['HTTP_AUTHORIZATION']))
+            $header = $_SERVER['HTTP_AUTHORIZATION'];
+        if(isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION']))
+            $header = $_SERVER['REDIRECT_HTTP_AUTHORIZATION'];
+        return $header;
+    }
+}
