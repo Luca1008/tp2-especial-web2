@@ -27,17 +27,6 @@
     El endpoint de la API es: http://localhost/WEB2/tp2%20especial%20web2/api/book
 
 
--> Detalles De Las Variables:
-
-    Estas variables son utilizadas al momento de usar el filtrado o el ordenamiento de los libros
-
-    sortby -> Campo por el cual se va ordenar la colección.
-    order -> Orden que va a tener la colección con el sortby elegido.
-    section -> El campo que se va a filtrar.
-    value -> El valor del campo que se quiere filtrar.
-    page -> Numero de la página en la que se encuentra.
-
-
 -> Endpoints De Cada Acción:
 
 <<PAGINACIÓN>>
@@ -48,9 +37,17 @@
     Para mostrar todos los libros disponibles: http://localhost/WEB2/tp2%20especial%20web2/api/book
 
 <<GET ORDENADO>>
+    
+    Estas variables son utilizadas al momento de usar el filtrado o el ordenamiento de los libros:
+
+    sortby -> Campo por el cual se va ordenar la colección.
+    order -> Orden que va a tener la colección con el sortby elegido.
+    section -> El campo que se va a filtrar.
+    element -> El valor del campo que se quiere filtrar.
+    page -> Numero de la página en la que se encuentra.
     Esta prestrabecido que si no se le asigna ningun campo te lo devuelva ordenado por: sortby: "id_article" y orden: "ascendente";
 
-    Pero tenemos otras maneras de traer los libros jugando con las variables anteriormente nombradas como las siguientes:
+    Pero tenemos otras maneras de traer los libros jugando con las variables anteriormente nombradas, a continuacion se muestran la mayoria de las convinaciones posibles:
 
     Mostrar una colección filtrada por alguno de sus campos -> http://localhost/WEB2/tp2%20especial%20web2/api/book?section=(campo)&element=(contenido)
 
@@ -65,6 +62,8 @@
     Filtrar, elegir campo y no poner el order (por defecto es ascendente) -> http://localhost/WEB2/tp2%20especial%20web2/api/book?section=(campo)&element=(contenido)&sortby=(campo)
 
     Filtrar, elegir el orden y no poner el campo (por defecto es id_pelicula) -> http://localhost/WEB2/tp2%20especial%20web2/api/book?section=(campo)&value=(contenido)&order=(asc-desc)
+
+    
 
     Si alguna variable se le puso algo que no existe y/o no existe esa variable se van a mostrar las cosas por default
 
