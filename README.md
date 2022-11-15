@@ -30,10 +30,13 @@
 -> Endpoints De Cada Acción:
 
 <<PAGINACIÓN>>
+
     Mostrar los libros con paginación:  http://localhost/WEB2/tp2%20especial%20web2/api/book?page= (numero entero)
+
     Aclaracion: cada pagina muestra de 10 libros a la vez por lo que si no hay suficientes libros y pasas a otra pagina te devolvera un arreglo vacio
 
 <<GET>>
+
     Para mostrar todos los libros disponibles: http://localhost/WEB2/tp2%20especial%20web2/api/book
 
 <<GET ORDENADO>>
@@ -69,6 +72,7 @@
 
 
 <<GET TOKEN>>
+    
     Obtener el token de autenticación -> http://localhost/WEB2/tp2%20especial%20web2/api/auth/token -> Aclaración: Al logearnos correctamente obtendremos el token el status code será "401 Unauthorized".
 
     Si cualquiera de estas solicitudes sale bien, el status code será "200 OK", de lo contrario será "400 Bad Request" (Salvo en la autenticación).
@@ -80,6 +84,7 @@
     
 
 <<POST>>
+    
     Para agragar un nuevo libro a la libreria es necesario primero logearse
 
     Agregar un nuevo libro -> http://localhost/WEB2/tp2%20especial%20web2/api/book 
@@ -89,6 +94,7 @@
      Si no se llenan todos los campos, el status code será "400 Bad Request", si el usuario no se encuentra logeado el status code será "401 Unauthorized".Si la solicitud sale bien, el status code sera "201 Created", de lo contrario.
 
 <<PUT>>
+    
     Para editar un libro es necesario primero logearse
 
     Editar un libro -> http://localhost/WEB2/tp2%20especial%20web2/api/book/:ID(del libro)
@@ -98,6 +104,7 @@
      No se puede dejar ninguno de esos campos vacíos, de lo contrario el status code será "400 Bad Request", si se intenta editar una pelicula en la que cuya id no exista, el status code será "404 Not found", y si el usuario no se encuentra logeado el status code será "401 Unauthorized".Si la solicitud sale bien, el status code sera "200 OK", de lo contrario, será "400 Bad Request".
 
 <<DELETE>>
+    
     Para borrar/vender un libro de la base de datos primero hay que estar logueado
 
     Borrar una película -> http://localhost/WEB2/tp2%20especial%20web2/api/book/:ID(del libro)
