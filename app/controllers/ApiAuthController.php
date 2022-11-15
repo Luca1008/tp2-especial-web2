@@ -54,7 +54,7 @@ class ApiAuthController{
         $user = $userpass[0];
         $pass = $userpass[1];
         $account = $this->model->getUser($user);
-        if ($user == $account->email_admin && password_verify($pass, $account->contrasenia)) {
+        if ($account && $user == $account->email_admin && password_verify($pass, $account->contrasenia)) {
             $header = array(
                 'alg' => 'HS256',
                 'typ' => 'JWT'

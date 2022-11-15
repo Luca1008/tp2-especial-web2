@@ -170,7 +170,7 @@ class ApiBookController {
                     $this->view->response("Faltan completar campos", 400);
                 } else {
                     $this->model->uploadEditBook($id,$book->nombre_libro, $book->id_type, $book->autor, $book->precio, $book->description);
-                    $this->view->response("El libro con el id = $id actualizado con éxito", 200);
+                    $this->view->response("El libro con el id = $id actualizado con éxito", 201);
                 }
             }
             else{
